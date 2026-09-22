@@ -1,21 +1,27 @@
 {
   "schemaVersion": 1,
-  "headline": "LeviLauncher 1.26.50 Support",
-  "summary": "This update adds Minecraft 1.26.50 support for inbuilt mods and fixes chat keyboard input.",
+  "headline": "LeviLauncher 1.5.25",
+  "summary": "This fork removes the Play Store install requirement so any installed Minecraft Bedrock Edition can be launched, and adds CI that builds and publishes releases without upstream secrets.",
   "sections": [
     {
       "title": "Features",
       "items": [
         {
-          "text": "Added inbuilt mod support for Minecraft 1.26.50."
+          "text": "Removed the Play Store install check: the launcher no longer requires Minecraft to be installed from Google Play and works with any installed Minecraft Bedrock Edition."
+        },
+        {
+          "text": "Added GitHub Actions support for building and releasing APKs without the upstream Firebase or signing secrets."
         }
       ]
     },
     {
-      "title": "Fixes",
+      "title": "Changes",
       "items": [
         {
-          "text": "Fixed the chat keyboard closing immediately after opening in Minecraft 1.26.50."
+          "text": "Deleted the PlayStoreValidator and PlayStoreValidationDialog classes together with the unused invalid-license overlay and their translations."
+        },
+        {
+          "text": "Updated the README and documentation to describe the new Minecraft requirement."
         }
       ]
     }
