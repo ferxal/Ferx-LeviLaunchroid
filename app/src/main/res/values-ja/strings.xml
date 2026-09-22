@@ -378,15 +378,6 @@ LeviLauncher を続行するには移行を完了する必要があります。<
     <string name="world_created_successfully">ワールドが作成されました</string>
     <string name="failed_to_create_world">ワールドの作成に失敗しました</string>
 
-    <string name="minecraft_playstore_required_title">Play ストア版が必要です</string>
-    <string name="minecraft_playstore_required_message">このランチャーは Google Play ストアの公式アプリでのみ動作します。</string>
-    <string name="buy_minecraft">Minecraft を入手</string>
-    <string name="minecraft_not_installed_title">Minecraft が未インストール</string>
-    <string name="minecraft_not_installed_message">Minecraft がインストールされていません。Google Play ストアからインストールしてください。</string>
-    <string name="install_minecraft">Minecraft をインストール</string>
-    <string name="genuine_badge_label">ライセンス未確認</string>
-    <string name="invalid_license_detected_toast">非正規品が検出されました。Play ストアからの Minecraft であることを確認してください。</string>
-
     <string name="full_mods_title">モッド </string>
     <string name="total_mods">合計モッド数:</string>
     <string name="enabled_mods">有効化:</string>
@@ -955,7 +946,6 @@ LeviLauncher を続行するには移行を完了する必要があります。<
     <string name="inbuilt_mod_hotbar_slot">ホットバースロット</string>
     <string name="inbuilt_mod_hotbar_slot_desc">ホットバースロットを選択するための1～9の個別ボタンを追加します</string>
     <string name="hotbar_slot_content_description">ホットバースロット %1$d</string>
-
 
     <!-- Added translations for strings present in the current English resources -->
     <string name="instance_shortcut_title">ホーム画面のショートカット</string>

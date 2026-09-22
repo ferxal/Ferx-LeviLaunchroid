@@ -378,15 +378,6 @@ La migración debe completarse antes de continuar con LeviLauncher.</string>
     <string name="world_created_successfully">Mundo creado con éxito</string>
     <string name="failed_to_create_world">Fallo al crear mundo</string>
 
-    <string name="minecraft_playstore_required_title">Se requiere versión de Play Store</string>
-    <string name="minecraft_playstore_required_message">Este launcher solo funciona con la app oficial de Minecraft desde Google Play Store. Por favor instálala para continuar.</string>
-    <string name="buy_minecraft">Obtener Minecraft</string>
-    <string name="minecraft_not_installed_title">Minecraft no instalado</string>
-    <string name="minecraft_not_installed_message">Minecraft no está instalado en tu dispositivo. Por favor instálalo desde Google Play Store para usar este launcher.</string>
-    <string name="install_minecraft">Instalar Minecraft</string>
-    <string name="genuine_badge_label">Licencia no verificada</string>
-    <string name="invalid_license_detected_toast">Minecraft no original detectado. Asegúrate de tener Minecraft de Google Play Store</string>
-
     <string name="full_mods_title">Mods </string>
     <string name="total_mods">Total de Mods:</string>
     <string name="enabled_mods">Habilitados:</string>
@@ -958,7 +949,6 @@ La migración debe completarse antes de continuar con LeviLauncher.</string>
     <string name="inbuilt_mod_hotbar_slot">Ranura de la barra rápida</string>
     <string name="inbuilt_mod_hotbar_slot_desc">Añade botones separados del 1 al 9 para seleccionar ranuras de la barra rápida</string>
     <string name="hotbar_slot_content_description">Ranura de la barra rápida %1$d</string>
-
 
     <!-- Added translations for strings present in the current English resources -->
     <string name="instance_shortcut_title">Acceso directo en la pantalla de inicio</string>

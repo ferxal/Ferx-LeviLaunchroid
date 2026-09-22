@@ -8,13 +8,12 @@ managing multiple versions or large worlds.
 
 ## Minecraft Requirement
 
-LeviLauncher requires the official Minecraft Bedrock Edition app from Google
-Play. It is designed for legitimate players and does not provide a Minecraft
+LeviLauncher works with any Minecraft Bedrock Edition app installed on the
+device. It is designed for legitimate players and does not provide a Minecraft
 license.
 
-If Minecraft is not installed, installed from an unsupported source, or too old
-for the current launcher behavior, the launcher may stop before starting the
-game.
+If Minecraft is not installed or too old for the current launcher behavior, the
+launcher may stop before starting the game.
 
 ## Minecraft Versions
 
@@ -40,8 +39,7 @@ sources you trust, and test them with an isolated version first.
 
 ### Why does the launcher say Minecraft is missing?
 
-Install or update the official Minecraft app from Google Play, then open
-LeviLauncher again.
+Install or update Minecraft on your device, then open LeviLauncher again.
 
 ### Why can an imported version fail to launch?
 

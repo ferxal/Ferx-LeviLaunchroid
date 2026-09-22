@@ -57,7 +57,6 @@
     <string name="files_processed">Berhasil memproses %d file mod.</string>
     <string name="user_cancelled">Impor dibatalkan oleh pengguna.</string>
 
-
     <string name="exit">Keluar</string>
 
     <string name="overlay_permission_message">Mohon berikan izin overlay.</string>
@@ -113,7 +112,6 @@
     <string name="dialog_message_disable_version_isolation">Anda mencoba menjalankan versi yang sudah terpasang dengan isolasi versi diaktifkan. Harap nonaktifkan isolasi versi untuk melanjutkan..</string>
     <string name="dialog_positive_disable">Matikan</string>
     <string name="dialog_positive_ok">OK</string>
-
 
     <string name="new_version_found">Versi baru ditemukan: %1$s</string>
     <string name="update_question">Apakah Anda ingin mengunduh dan menginstal versi terbaru?</string>
@@ -333,16 +331,6 @@ Migrasi harus selesai sebelum LeviLauncher dapat melanjutkan.</string>
     <string name="add_at_least_one_layer">Tambahkan satu lapisan</string>
     <string name="world_created_successfully">Dunia tercipta dengan sukses.</string>
     <string name="failed_to_create_world">Gagal menciptakan dunia</string>
-
-    <!-- Play Store Validation -->
-    <string name="minecraft_playstore_required_title">Versi Play Store Diperlukan</string>
-    <string name="minecraft_playstore_required_message">Peluncur ini hanya berfungsi dengan aplikasi Minecraft resmi dari Google Play Store. Silakan instal versi Play Store untuk melanjutkan.</string>
-    <string name="buy_minecraft">Dapatkan Minecraft Di Play Store</string>
-    <string name="minecraft_not_installed_title">Minecraft Belum Terinstal</string>
-    <string name="minecraft_not_installed_message">Minecraft belum terpasang di perangkat Anda. Silakan instal dari Google Play Store untuk menggunakan peluncur ini.</string>
-    <string name="install_minecraft">Instal Minecraft</string>
-    <string name="genuine_badge_label">Lisensi tidak ter-verifikasi</string>
-    <string name="invalid_license_detected_toast">Minecraft palsu terdeteksi. Pastikan Minecraft Anda berasal dari Google Play Store.</string>
 
     <string name="full_mods_title">Mods </string>
     <string name="total_mods">Total Mods:</string>
@@ -981,7 +969,6 @@ Migrasi harus selesai sebelum LeviLauncher dapat melanjutkan.</string>
     <string name="inbuilt_mod_hotbar_slot">Slot Hotbar</string>
     <string name="inbuilt_mod_hotbar_slot_desc">Menambahkan tombol 1–9 terpisah untuk memilih slot hotbar</string>
     <string name="hotbar_slot_content_description">Slot hotbar %1$d</string>
-
 
     <!-- Added translations for strings present in the current English resources -->
     <string name="instance_shortcut_title">Pintasan Layar Utama</string>

@@ -57,7 +57,6 @@
     <string name="files_processed">Успешно добавлены файлы мода %d </string>
     <string name="user_cancelled">Импорт отменен пользователем</string>
 
-
     <string name="exit">Выйти</string>
 
     <string name="overlay_permission_message">Необходимо разрешение на отображение поверх других приложений</string>
@@ -113,7 +112,6 @@
     <string name="dialog_message_disable_version_isolation">Вы пытаетесь запустить установленную версию с включенной изоляцией версии. Пожалуйста, отключите изоляцию версии, чтобы продолжить.</string>
     <string name="dialog_positive_disable">Отключить</string>
     <string name="dialog_positive_ok">ОК</string>
-
 
     <string name="new_version_found">Найдена новая версия: %1$s</string>
     <string name="update_question">Вы хотите скачать и установить последнюю версию?</string>
@@ -328,16 +326,6 @@
     <string name="add_at_least_one_layer">Добавьте хотя бы один слой</string>
     <string name="world_created_successfully">Мир успешно создан</string>
     <string name="failed_to_create_world">Не удалось создать мир</string>
-
-    <!-- Play Store Validation -->
-    <string name="minecraft_playstore_required_title">Требуется версия из Play Маркета</string>
-    <string name="minecraft_playstore_required_message">Этот лаунчер работает только с официальным приложением Minecraft из Google Play Маркета. Пожалуйста, установите версию из Play Маркета, чтобы продолжить.</string>
-    <string name="buy_minecraft">Получить Minecraft</string>
-    <string name="minecraft_not_installed_title">Minecraft не установлен</string>
-    <string name="minecraft_not_installed_message">Похоже, что Minecraft не установлен на вашем устройстве. Пожалуйста, установите его из Google Play Маркета, чтобы использовать этот лаунчер.</string>
-    <string name="install_minecraft">Установить Minecraft</string>
-    <string name="genuine_badge_label">Лицензия не подтверждена</string>
-    <string name="invalid_license_detected_toast">Обнаружена нелицензионная версия Minecraft. Убедитесь, что Minecraft установлен из Google Play Маркета</string>
 
     <string name="full_mods_title">Моды </string>
     <string name="total_mods">Всего модов:</string>
@@ -988,7 +976,6 @@
     <string name="inbuilt_mod_hotbar_slot">Слот панели быстрого доступа</string>
     <string name="inbuilt_mod_hotbar_slot_desc">Добавляет отдельные кнопки 1–9 для выбора слотов панели быстрого доступа</string>
     <string name="hotbar_slot_content_description">Слот панели быстрого доступа %1$d</string>
-
 
     <!-- Added translations for strings present in the current English resources -->
     <string name="instance_shortcut_title">Ярлык на главном экране</string>

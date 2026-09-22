@@ -6,7 +6,7 @@
 
 - Android 9.0 或更高版本。
 - ARM64 设备。
-- 来自 Google Play 的正版 Minecraft 基岩版。
+- 设备上已安装 Minecraft 基岩版。
 - 足够的可用存储空间，用于启动器、游戏数据、世界、资源包和备份。
 
 LeviLauncher 不是 Minecraft 授权替代品。它依赖官方游戏运行，也不隶属于 Mojang 或 Microsoft。
@@ -21,9 +21,9 @@ LeviLauncher 不是 Minecraft 授权替代品。它依赖官方游戏运行，�
 
 ## 准备 Minecraft
 
-使用启动器前，请先从 Google Play 安装 Minecraft 基岩版。LeviLauncher 会检查官方应用，并把它作为可信游戏来源。
+使用启动器前，请确认设备上已安装 Minecraft 基岩版。启动器会识别任意已安装的 Minecraft 包作为游戏来源，不再要求必须来自 Google Play 商店；如果你希望获得 Play 商店更新，请先从 Google Play 安装。
 
-如果启动器提示 Minecraft 未安装或不受支持，请先安装或更新 Google Play 版本。
+如果启动器提示 Minecraft 未安装，请先安装或更新 Minecraft。
 
 ## 选择并启动版本
 

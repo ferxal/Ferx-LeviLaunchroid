@@ -6,7 +6,7 @@ This page walks through the launcher path: install LeviLauncher, prepare the off
 
 - Android 9.0 or later.
 - ARM64 device.
-- A legitimate Minecraft Bedrock Edition installation from Google Play.
+- A Minecraft Bedrock Edition installation on the device.
 - Enough free storage for the launcher, Minecraft data, worlds, packs, and backups.
 
 LeviLauncher is not a replacement for owning Minecraft. It works with the official game and is not affiliated with Mojang or Microsoft.
@@ -21,9 +21,9 @@ LeviLauncher is not a replacement for owning Minecraft. It works with the offici
 
 ## Prepare Minecraft
 
-Install Minecraft Bedrock Edition from Google Play before using the launcher. LeviLauncher checks for the official app and uses it as the trusted game source.
+Make sure Minecraft Bedrock Edition is installed on your device. The launcher detects any installed Minecraft package as the game source; it does not require the app to come from the Google Play Store, so if you want Play Store updates, install it from Google Play first.
 
-If the launcher reports that Minecraft is missing or unsupported, install or update the Google Play version first.
+If the launcher reports that Minecraft is missing, install or update Minecraft first.
 
 ## Choose and Launch a Version
 

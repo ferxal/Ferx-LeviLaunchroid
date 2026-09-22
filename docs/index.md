@@ -24,7 +24,7 @@ hero:
 
 features:
   - title: Official game first
-    details: LeviLauncher is built for legitimate Minecraft Bedrock players and requires the official Google Play version of Minecraft.
+    details: LeviLauncher is built for legitimate Minecraft Bedrock players and works with the Minecraft app installed on your device.
   - title: Version isolation
     details: Keep multiple game versions and their data separated so testing one setup does not disturb another.
   - title: Content management
@@ -43,7 +43,7 @@ Use the language selector or open [简体中文](/zh-CN/).
 
 ## What this site covers
 
-LeviLauncher is an open-source Android launcher for Minecraft Bedrock Edition. It focuses on practical launcher workflows first: installing the launcher, preparing an official Minecraft copy, managing versions, starting the game, and keeping player content organized.
+LeviLauncher is an open-source Android launcher for Minecraft Bedrock Edition. It focuses on practical launcher workflows first: installing the launcher, preparing Minecraft, managing versions, starting the game, and keeping player content organized.
 
 Developer-facing Preloader APIs are still documented here, but they are part of the Developer section instead of the main entry point.
 

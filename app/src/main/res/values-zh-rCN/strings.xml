@@ -68,7 +68,6 @@
     <string name="files_processed">成功处理 %d 个模组文件</string>
     <string name="user_cancelled">用户取消导入</string>
 
-
     <string name="exit">退出</string>
 
     <string name="overlay_permission_message">请授予悬浮窗权限</string>
@@ -190,7 +189,6 @@
     <string name="dialog_message_disable_version_isolation">您尝试在启用版本隔离的情况下启动已安装的版本。请禁用版本隔离以继续。</string>
     <string name="dialog_positive_disable">禁用</string>
     <string name="dialog_positive_ok">确定</string>
-
 
     <string name="eula_title">LeviLauncher 用户协议</string>
     <string name="eula_message"><b>欢迎使用 LeviLauncher</b>\n\n使用本软件即表示您同意：\n\n• 此为<b>非官方</b> Minecraft 启动器\n• 您需拥有<b>合法授权</b>的 Minecraft 副本\n• 禁止任何形式的盗版或作弊行为\n• 模组/资源包使用风险自负\n• 与 Mojang/Microsoft 无关联\n\n继续使用视为接受条款</string>
@@ -327,17 +325,6 @@
     <string name="add_at_least_one_layer">请至少添加一层</string>
     <string name="world_created_successfully">世界创建成功</string>
     <string name="failed_to_create_world">创建世界失败</string>
-
-    <!-- Play Store Validation -->
-    <string name="minecraft_playstore_required_title">需要 Play 商店版本</string>
-    <string name="minecraft_playstore_required_message">此启动器仅适用于从 Google Play 商店下载的官方 Minecraft。请安装 Play 商店版本后再继续。</string>
-    <string name="buy_minecraft">获取 Minecraft</string>
-    <string name="minecraft_not_installed_title">未安装 Minecraft</string>
-    <string name="minecraft_not_installed_message">您的设备上似乎没有安装 Minecraft。请先从 Google Play 商店安装以使用此启动器。</string>
-    <string name="install_minecraft">安装 Minecraft</string>
-    <string name="genuine_badge_label">未通过正版验证</string>
-    <string name="invalid_license_detected_toast">非正版MC，请确保设备上MC来自于谷歌商店</string>
-
 
     <string name="full_mods_title">模组 </string>
     <string name="total_mods">模组总数：</string>
@@ -975,7 +962,6 @@
     <string name="inbuilt_mod_hotbar_slot">快捷栏槽位</string>
     <string name="inbuilt_mod_hotbar_slot_desc">添加独立的 1–9 按钮，用于选择快捷栏槽位</string>
     <string name="hotbar_slot_content_description">快捷栏槽位 %1$d</string>
-
 
     <!-- Added translations for strings present in the current English resources -->
     <string name="instance_shortcut_title">主屏幕快捷方式</string>

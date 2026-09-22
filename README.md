@@ -43,7 +43,7 @@ Before installing LeviLauncher, ensure your device meets the following minimum s
 - **Device Architecture:** ARM64 (v8a)
 - **RAM:** Minimum 1 GB available RAM (2 GB or more recommended)
 - **Storage:** At least 2 GB of available storage for Minecraft and game data
-- **License Requirement:** You must own a licensed copy of Minecraft Bedrock Edition purchased from Google Play
+- **License Requirement:** You must own a licensed copy of Minecraft Bedrock Edition
 
 > **Note:** For optimal performance and stability, we recommend Android 9.0 or higher with at least 3 GB of available RAM and 5 GB of free storage.
 
@@ -53,7 +53,7 @@ Before installing LeviLauncher, ensure your device meets the following minimum s
 
 ### Prerequisites
 
-Before proceeding with LeviLauncher installation, ensure that you have the official Minecraft Bedrock Edition app installed on your device from Google Play. This is required for LeviLauncher to function properly.
+Before proceeding with LeviLauncher installation, ensure that Minecraft Bedrock Edition is installed on your device. LeviLauncher supports any installed Minecraft package as the game source, so a Play Store install is not required.
 
 ### Installation Steps
 

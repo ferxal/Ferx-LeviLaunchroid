@@ -24,7 +24,7 @@ hero:
 
 features:
   - title: 官方游戏优先
-    details: LeviLauncher 面向合法 Minecraft 基岩版玩家，要求设备上存在来自 Google Play 的官方 Minecraft。
+    details: LeviLauncher 面向合法 Minecraft 基岩版玩家，支持设备上已安装的 Minecraft。
   - title: 多版本隔离
     details: 独立管理多个 Minecraft 版本和数据目录，测试、游玩、回退互不干扰。
   - title: 内容管理

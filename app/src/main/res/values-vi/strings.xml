@@ -68,7 +68,6 @@
     <string name="files_processed">Đã xử lý thành công file Mod %d</string>
     <string name="user_cancelled">Hành động đã bị hủy bởi người dùng</string>
 
-
     <string name="exit">Thoát</string>
 
     <string name="overlay_permission_message">Vui lòng cấp quyền hiển thị lớp phủ.</string>
@@ -102,7 +101,6 @@
     <string name="settings_tab_about">Về</string>
     <string name="settings_theme_desc">Chọn chủ đề cho ứng dụng</string>
 
-
     <string name="unknown_sources_permission_title">Quyền cài đặt</string>
     <string name="unknown_sources_permission_message">Để cài đặt hoặc cập nhật ứng dụng này, vui lòng cấp quyền cài đặt ứng dụng không rõ nguồn gốc. Nhấp vào "Cấp quyền" để mở cài đặt hệ thống, bật quyền cho ứng dụng này và quay lại để tiếp tục.</string>
 
@@ -131,7 +129,6 @@
     <string name="dialog_message_disable_version_isolation">Bạn đang cố gắng khởi chạy một phiên bản đã cài đặt với tính năng chia phiên bản được bật. Vui lòng tắt tính năng này để tiếp tục. </string>
     <string name="dialog_positive_disable">Tắt</string>
     <string name="dialog_positive_ok">OK</string>
-
 
     <string name="new_version_found">Đã tìm thấy phiên bản mới: %1$s</string>
     <string name="update_question">Bạn có muốn tải xuống và cài đặt phiên bản mới nhất không?</string>
@@ -387,16 +384,6 @@ Quá trình chuyển đổi phải hoàn tất trước khi LeviLauncher có th�
     <string name="add_at_least_one_layer">Thêm ít nhất một lớp</string>
     <string name="world_created_successfully">Thế giới đã được tạo thành công</string>
     <string name="failed_to_create_world">Tạo thế giới thất bại</string>
-
-    <!-- Play Store Validation -->
-    <string name="minecraft_playstore_required_title">Cần có phiên bản Play Store</string>
-    <string name="minecraft_playstore_required_message">Trình khởi chạy này chỉ hoạt động với ứng dụng Minecraft chính thức từ Google Play Store. Vui lòng cài đặt phiên bản từ Play Store để tiếp tục.</string>
-    <string name="buy_minecraft">Lấy Minecraft</string>
-    <string name="minecraft_not_installed_title">Minecraft chưa được cài đặt</string>
-    <string name="minecraft_not_installed_message">Minecraft chưa được cài đặt trên thiết bị của bạn. Vui lòng cài đặt trò chơi từ Google Play Store để sử dụng launcher này.</string>
-    <string name="install_minecraft">Cài đặt Minecraft</string>
-    <string name="genuine_badge_label">Giấy phép chưa được xác minh</string>
-    <string name="invalid_license_detected_toast">Đã phát hiện Minecraft không phải bản chính hãng. Hãy đảm bảo Minecraft của bạn được tải từ Google Play Store.</string>
 
     <string name="full_mods_title">Mods </string>
     <string name="total_mods">Tổng các Mods:</string>
@@ -987,7 +974,6 @@ Quá trình chuyển đổi phải hoàn tất trước khi LeviLauncher có th�
     <string name="inbuilt_mod_hotbar_slot">Ô thanh nhanh</string>
     <string name="inbuilt_mod_hotbar_slot_desc">Thêm các nút 1–9 riêng để chọn ô trên thanh nhanh</string>
     <string name="hotbar_slot_content_description">Ô thanh nhanh %1$d</string>
-
 
     <!-- Added translations for strings present in the current English resources -->
     <string name="instance_shortcut_title">Lối tắt màn hình chính</string>

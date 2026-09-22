@@ -402,16 +402,6 @@ LeviLauncher\'ın devam edebilmesi için taşımanın tamamlanması gerekiyor.</
     <string name="world_created_successfully">Dünya başarıyla oluşturuldu</string>
     <string name="failed_to_create_world">Dünya oluşturulamadı</string>
 
-    <!-- Play Store Validation -->
-    <string name="minecraft_playstore_required_title">Play Store Sürümü Gerekli</string>
-    <string name="minecraft_playstore_required_message">Bu başlatıcı yalnızca Google Play Store\'daki resmi Minecraft uygulamasıyla çalışır. Devam etmek için Play Store sürümünü yükleyin.</string>
-    <string name="buy_minecraft">Minecraft\'ı Edin</string>
-    <string name="minecraft_not_installed_title">Minecraft Yüklü Değil</string>
-    <string name="minecraft_not_installed_message">Cihazınızda Minecraft yüklü değil. Bu başlatıcıyı kullanmak için Google Play Store\'dan yükleyin.</string>
-    <string name="install_minecraft">Minecraft\'ı Yükle</string>
-    <string name="genuine_badge_label">Lisans doğrulanmadı</string>
-    <string name="invalid_license_detected_toast">Orijinal olmayan Minecraft algılandı. Minecraft\'ın Google Play Store\'dan olduğundan emin olun</string>
-
     <string name="full_mods_title">Modlar </string>
     <string name="total_mods">Toplam Mod:</string>
     <string name="enabled_mods">Etkin:</string>
@@ -984,7 +974,6 @@ LeviLauncher\'ın devam edebilmesi için taşımanın tamamlanması gerekiyor.</
     <string name="inbuilt_mod_hotbar_slot">Hızlı Erişim Yuvası</string>
     <string name="inbuilt_mod_hotbar_slot_desc">Hızlı erişim yuvalarını seçmek için ayrı 1–9 düğmeleri ekler</string>
     <string name="hotbar_slot_content_description">Hızlı erişim yuvası %1$d</string>
-
 
     <!-- Added translations for strings present in the current English resources -->
     <string name="instance_shortcut_title">Ana Ekran Kısayolu</string>

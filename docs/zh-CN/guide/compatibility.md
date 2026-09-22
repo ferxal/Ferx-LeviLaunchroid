@@ -7,10 +7,10 @@ LeviLauncher 面向 Android 9.0 或更高版本的 ARM64 设备。可用内存�
 
 ## Minecraft 要求
 
-LeviLauncher 需要 Google Play 安装的正版 Minecraft Bedrock Edition。它面向合法
-玩家，不提供 Minecraft 授权。
+LeviLauncher 支持设备上安装的任意 Minecraft 基岩版。它面向合法玩家，不提供
+Minecraft 授权。
 
-如果没有安装 Minecraft、安装来源不受支持，或版本过旧，启动器可能会在启动游戏前停止。
+如果没有安装 Minecraft，或版本过旧，启动器可能会在启动游戏前停止。
 
 ## Minecraft 版本
 
@@ -30,7 +30,7 @@ Native 模块会在游戏进程中运行原生代码。只安装可信来源的�
 
 ### 为什么启动器提示找不到 Minecraft？
 
-请从 Google Play 安装或更新官方 Minecraft，然后重新打开 LeviLauncher。
+请在设备上安装或更新 Minecraft，然后重新打开 LeviLauncher。
 
 ### 为什么导入版本启动失败？
 
