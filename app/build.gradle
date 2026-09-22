@@ -11,6 +11,10 @@ if (localPropertiesFile.exists()) {
     localProperties.load(new FileInputStream(localPropertiesFile))
 }
 
+// CI builds without real Firebase credentials disable Crashlytics uploads so that
+// packaging still works with a placeholder google-services.json.
+def firebaseUploadEnabled = !project.hasProperty('disableFirebaseUpload')
+
 def getGitTag() {
     def tag = "unknown"
     try {
@@ -76,7 +80,8 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             firebaseCrashlytics {
-                nativeSymbolUploadEnabled true
+                mappingFileUploadEnabled firebaseUploadEnabled
+                nativeSymbolUploadEnabled firebaseUploadEnabled
             }
             ndk {
                 debugSymbolLevel 'FULL'
@@ -87,7 +92,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             firebaseCrashlytics {
-                nativeSymbolUploadEnabled true
+                nativeSymbolUploadEnabled firebaseUploadEnabled
             }
             ndk {
                 debugSymbolLevel 'FULL'
@@ -100,7 +105,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             firebaseCrashlytics {
                 mappingFileUploadEnabled false
-                nativeSymbolUploadEnabled true
+                nativeSymbolUploadEnabled firebaseUploadEnabled
             }
             resValue "string", "app_name", "LeviLauncher Beta"
             buildConfigField "boolean", "IS_BETA", "true"

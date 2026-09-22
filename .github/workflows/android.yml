@@ -11,6 +11,9 @@ on:
       - "**"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,10 +33,15 @@ jobs:
         run: |
           set -euo pipefail
 
-          if [ -z "${GOOGLE_SERVICES_JSON_BASE64:-}" ]; then
-            echo "HAS_GOOGLE_SERVICES=false" >> "$GITHUB_ENV"
-            echo "GOOGLE_SERVICES_JSON_BASE64 is not configured; using a CI-only Firebase placeholder for compile checks."
-            mkdir -p app
+          mkdir -p app
+          if [ -n "${GOOGLE_SERVICES_JSON_BASE64:-}" ]; then
+            printf '%s' "${GOOGLE_SERVICES_JSON_BASE64}" | base64 --decode > app/google-services.json
+            echo "Using google-services.json decoded from GOOGLE_SERVICES_JSON_BASE64."
+            echo "HAS_REAL_GOOGLE_SERVICES=true" >> "$GITHUB_ENV"
+          else
+            echo "GOOGLE_SERVICES_JSON_BASE64 is not configured; using a CI-only Firebase placeholder."
+            echo "The APK still builds and installs; Firebase news push and Crashlytics stay inactive."
+            echo "HAS_REAL_GOOGLE_SERVICES=false" >> "$GITHUB_ENV"
             cat > app/google-services.json <<'JSON'
           {
             "project_info": {
@@ -65,11 +73,8 @@ jobs:
             "configuration_version": "1"
           }
           JSON
-            exit 0
           fi
 
-          mkdir -p app
-          printf '%s' "${GOOGLE_SERVICES_JSON_BASE64}" | base64 --decode > app/google-services.json
           python3 -m json.tool app/google-services.json > /dev/null
           python3 - <<'PY'
           import json
@@ -93,7 +98,6 @@ jobs:
               )
               sys.exit(1)
           PY
-          echo "HAS_GOOGLE_SERVICES=true" >> "$GITHUB_ENV"
 
       - name: Setup Java JDK
         uses: actions/setup-java@v4
@@ -136,85 +140,141 @@ jobs:
           CF_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
         run: echo "curseforge.api_key=${CF_API_KEY}" >> local.properties
 
-      - name: Build Debug, Beta and Unsigned Release APKs
-        if: env.HAS_GOOGLE_SERVICES == 'true'
-        run: ./gradlew assembleDebug assembleBeta assembleRelease
+      - name: Prepare signing keystore
+        env:
+          SIGNING_KEY_STORE: ${{ secrets.SIGNING_KEY_STORE }}
+          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
 
-      - name: Compile Debug Without Firebase Secrets
-        if: env.HAS_GOOGLE_SERVICES == 'false'
-        run: ./gradlew :app:compileDebugKotlin :app:compileDebugJavaWithJavac
+          ALIAS="${SIGNING_KEY_ALIAS:-levilauncher}"
+          STORE_PASSWORD="${SIGNING_STORE_PASSWORD:-android}"
+          KEY_PASSWORD="${SIGNING_KEY_PASSWORD:-android}"
+          KEYSTORE="$RUNNER_TEMP/release.keystore"
+
+          if [ -n "${SIGNING_KEY_STORE:-}" ]; then
+            printf '%s' "${SIGNING_KEY_STORE}" | base64 --decode > "$KEYSTORE"
+            echo "Signing with the repository signing secrets."
+          else
+            echo "No signing secrets configured; generating a throwaway keystore so the APK stays installable."
+            keytool -genkeypair -v \
+              -keystore "$KEYSTORE" \
+              -alias "$ALIAS" \
+              -keyalg RSA \
+              -keysize 2048 \
+              -validity 10000 \
+              -storepass "$STORE_PASSWORD" \
+              -keypass "$KEY_PASSWORD" \
+              -dname "CN=LeviLauncher CI, OU=CI, O=LeviLauncher, L=NA, ST=NA, C=US" > /dev/null
+          fi
+
+          {
+            echo "SIGN_KEYSTORE=$KEYSTORE"
+            echo "SIGN_ALIAS=$ALIAS"
+            echo "SIGN_STORE_PASSWORD=$STORE_PASSWORD"
+            echo "SIGN_KEY_PASSWORD=$KEY_PASSWORD"
+          } >> "$GITHUB_ENV"
+
+      - name: Build Debug, Beta and Release APKs
+        run: |
+          set -euo pipefail
+
+          GRADLE_FLAGS=""
+          if [ "${HAS_REAL_GOOGLE_SERVICES:-false}" != "true" ]; then
+            GRADLE_FLAGS="-PdisableFirebaseUpload"
+            echo "Disabling Crashlytics mapping/symbol uploads for this placeholder build."
+          fi
+
+          ./gradlew assembleDebug assembleBeta assembleRelease $GRADLE_FLAGS
+
+      - name: Sign release APK
+        id: sign
+        run: |
+          set -euo pipefail
+
+          SDK_ROOT="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-$HOME/Android/Sdk}}"
+          BUILD_TOOLS="$SDK_ROOT/build-tools/35.0.0"
+
+          UNSIGNED="app/build/outputs/apk/release/app-release-unsigned.apk"
+          if [ ! -f "$UNSIGNED" ]; then
+            UNSIGNED="app/build/outputs/apk/release/app-release.apk"
+          fi
+          if [ ! -f "$UNSIGNED" ]; then
+            echo "Release APK not found; available outputs:" >&2
+            find app/build/outputs/apk -name '*.apk' >&2 || true
+            exit 1
+          fi
+
+          if [[ "${GITHUB_REF_NAME}" == v* ]]; then
+            LABEL="${GITHUB_REF_NAME}"
+          else
+            LABEL="${GITHUB_SHA::7}"
+          fi
+          SIGNED="LeviLauncher-${LABEL}-release.apk"
+
+          "$BUILD_TOOLS/zipalign" -p -f -v 4 "$UNSIGNED" "$RUNNER_TEMP/aligned.apk"
+          "$BUILD_TOOLS/apksigner" sign \
+            --ks "$SIGN_KEYSTORE" \
+            --ks-key-alias "$SIGN_ALIAS" \
+            --ks-pass "pass:$SIGN_STORE_PASSWORD" \
+            --key-pass "pass:$SIGN_KEY_PASSWORD" \
+            --out "$SIGNED" \
+            "$RUNNER_TEMP/aligned.apk"
+          "$BUILD_TOOLS/apksigner" verify --print-certs "$SIGNED"
+
+          echo "signed_apk=$SIGNED" >> "$GITHUB_OUTPUT"
+          echo "Signed APK: $SIGNED"
 
       - name: Upload Debug APK
-        if: env.HAS_GOOGLE_SERVICES == 'true'
         uses: actions/upload-artifact@v4.6.2
         with:
           name: LeviLauncher-debug-apk
           path: app/build/outputs/apk/debug/*.apk
-
-      - name: Upload Unsigned Release APK
-        if: env.HAS_GOOGLE_SERVICES == 'true'
-        uses: actions/upload-artifact@v4.6.2
-        with:
-          name: LeviLauncher-release-unsigned-apk
-          path: app/build/outputs/apk/release/*-unsigned.apk
+          if-no-files-found: warn
 
       - name: Upload Beta APK
-        if: env.HAS_GOOGLE_SERVICES == 'true'
         uses: actions/upload-artifact@v4.6.2
         with:
           name: LeviLauncher-beta-apk
           path: app/build/outputs/apk/beta/*.apk
+          if-no-files-found: warn
 
-      - name: Sign Release APK
-        if: env.HAS_GOOGLE_SERVICES == 'true' && startsWith(github.ref, 'refs/tags/')
-        uses: kevin-david/zipalign-sign-android-release@v2
-        id: sign_app
-        with:
-          releaseDirectory: app/build/outputs/apk/release
-          signingKeyBase64: ${{ secrets.SIGNING_KEY_STORE }}
-          alias: ${{ secrets.SIGNING_KEY_ALIAS }}
-          keyStorePassword: ${{ secrets.SIGNING_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
-          zipAlign: true
-        env:
-          BUILD_TOOLS_VERSION: "35.0.0"
-
-      - name: Rename APK with tag
-        if: env.HAS_GOOGLE_SERVICES == 'true' && startsWith(github.ref, 'refs/tags/')
-        run: |
-          TAG=${GITHUB_REF_NAME}
-          SIGNED_APK="${{ steps.sign_app.outputs.signedReleaseFile }}"
-          APK_DST="LeviLauncher-${TAG}-release.apk"
-          cp "$SIGNED_APK" "$APK_DST"
-          echo "Signed APK renamed to $APK_DST"
-
-      - name: Upload Signed APK Artifact
-        if: env.HAS_GOOGLE_SERVICES == 'true' && startsWith(github.ref, 'refs/tags/')
+      - name: Upload Signed Release APK
         uses: actions/upload-artifact@v4.6.2
         with:
-          name: LeviLauncher-${{ github.ref_name }}-release.apk
-          path: LeviLauncher-${{ github.ref_name }}-release.apk
+          name: LeviLauncher-release-apk
+          path: ${{ steps.sign.outputs.signed_apk }}
+          if-no-files-found: error
 
       - name: Generate GitHub release notes
-        if: env.HAS_GOOGLE_SERVICES == 'true' && startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/')
         run: python3 scripts/render_release_notes.py resources/launcher/changelog.json release-notes.md
 
       - name: Release APK to GitHub Releases
-        if: env.HAS_GOOGLE_SERVICES == 'true' && startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: LeviLauncher-${{ github.ref_name }}-release.apk
+          files: ${{ steps.sign.outputs.signed_apk }}
           body_path: release-notes.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Notify Discord
-        if: env.HAS_GOOGLE_SERVICES == 'true' && startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/')
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          APK_URL: "https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/LeviLauncher-${{ github.ref_name }}-release.apk"
+          APK_URL: "https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/${{ steps.sign.outputs.signed_apk }}"
           TAG_NAME: ${{ github.ref_name }}
         run: |
+          set -euo pipefail
+
+          if [ -z "${DISCORD_WEBHOOK:-}" ]; then
+            echo "DISCORD_WEBHOOK is not configured; skipping the release announcement."
+            exit 0
+          fi
+
           EMBED_TITLE="🚀 LeviLauncher Update!"
           EMBED_DESC="A new version of **LeviLaunchroid** is ready."
           EMBED_COLOR=5814783
